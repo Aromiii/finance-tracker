@@ -77,309 +77,298 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Container(
-        clipBehavior: Clip.antiAlias,
-        decoration: const BoxDecoration(color: Color(0xFF2D2D2D)),
-        child: Stack(
-          children: [
-            Positioned(
-              left: -80,
-              top: -132,
-              child: Container(
-                width: 342,
-                height: 342,
-                decoration: const ShapeDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment(0.55, -0.84),
-                    end: Alignment(-0.55, 0.84),
-                    colors: [Color(0xFF00B512), Color(0x0000B512)],
-                  ),
-                  shape: OvalBorder(),
+        body: Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(color: Color(0xFF2D2D2D)),
+      child: Stack(
+        children: [
+          Positioned(
+            left: -80,
+            top: -132,
+            child: Container(
+              width: 342,
+              height: 342,
+              decoration: const ShapeDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment(0.55, -0.84),
+                  end: Alignment(-0.55, 0.84),
+                  colors: [Color(0xFF00B512), Color(0x0000B512)],
                 ),
+                shape: OvalBorder(),
               ),
             ),
-            Positioned(
-              left: 0,
-              top: 0,
-              child: Flexible(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 662,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                              'Welcome <käyttäjän nimi>',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontFamily: 'Francois One',
-                                fontWeight: FontWeight.w400,
-                              ),
+          ),
+          Positioned(
+            left: 0,
+            top: 0,
+            child: Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 676,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 30),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            'Welcome <käyttäjän nimi>',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontFamily: 'Francois One',
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Container(
-                            width: double.infinity,
-                            height: 113,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF737373),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          width: double.infinity,
+                          height: 113,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: ShapeDecoration(
+                            color: Color(0xFF737373),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 56,
+                          ),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                left: 0,
+                                top: 56,
+                                child: Container(
+                                  width: 400,
+                                  decoration: ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 0.50,
+                                        strokeAlign:
+                                            BorderSide.strokeAlignCenter,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: 160,
+                                top: 113.04,
+                                child: Transform(
+                                  transform: Matrix4.identity()
+                                    ..translate(0.0, 0.0)
+                                    ..rotateZ(-1.57),
                                   child: Container(
-                                    width: 400,
+                                    width: 113.04,
                                     decoration: ShapeDecoration(
                                       shape: RoundedRectangleBorder(
                                         side: BorderSide(
                                           width: 0.50,
-                                          strokeAlign: BorderSide.strokeAlignCenter,
+                                          strokeAlign:
+                                              BorderSide.strokeAlignCenter,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                Positioned(
-                                  left: 160,
-                                  top: 113.04,
-                                  child: Transform(
-                                    transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-1.57),
-                                    child: Container(
-                                      width: 113.04,
-                                      decoration: ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            width: 0.50,
-                                            strokeAlign: BorderSide.strokeAlignCenter,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                              ),
+                              const Positioned(
+                                left: 18,
+                                top: 67,
+                                child: Text(
+                                  'This month',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                const Positioned(
-                                  left: 18,
-                                  top: 67,
-                                  child: Text(
-                                    'This month',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                              ),
+                              const Positioned(
+                                left: 19,
+                                top: 11,
+                                child: Text(
+                                  'Total',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                const Positioned(
-                                  left: 19,
-                                  top: 11,
-                                  child: Text(
-                                    'Total',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                              ),
+                              Positioned(
+                                left: 226,
+                                top: 67,
+                                child: Text(
+                                  '423,34€',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                Positioned(
-                                  left: 226,
-                                  top: 67,
-                                  child: Text(
-                                    '423,34€',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                              ),
+                              Positioned(
+                                left: 197,
+                                top: 11,
+                                child: Text(
+                                  '12 343,56€',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                Positioned(
-                                  left: 197,
-                                  top: 11,
-                                  child: Text(
-                                    '12 343,56€',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          width: double.infinity,
+                          height: 244,
+                          padding: const EdgeInsets.all(5),
+                          clipBehavior: Clip.antiAlias,
+                          decoration: ShapeDecoration(
+                            color: Color(0xFF737373),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            shadows: const [
+                              BoxShadow(
+                                color: Color(0x3F000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
+                                spreadRadius: 0,
+                              )
+                            ],
+                          ),
+                          child: const Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'Last events',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                              ],
+                              ),
+                              SizedBox(height: 5),
+                              EventListElement(),
+                              SizedBox(height: 5),
+                              EventListElement(),
+                              SizedBox(height: 5),
+                              EventListElement(),
+                              SizedBox(height: 5),
+                              EventListElement(),
+                              SizedBox(height: 5),
+                              EventListElement(),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          width: double.infinity,
+                          height: 195,
+                          padding: const EdgeInsets.all(5),
+                          clipBehavior: Clip.antiAlias,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF737373),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Container(
-                            width: double.infinity,
-                            height: 244,
-                            padding: const EdgeInsets.all(5),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF737373),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              shadows: const [
-                                BoxShadow(
-                                  color: Color(0x3F000000),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                            child: const Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: Text(
-                                    'Last events',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                width: double.infinity,
+                                child: Text(
+                                  'New event',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                SizedBox(height: 5),
-                                EventListElement(),
-                                SizedBox(height: 5),
-                                EventListElement(),
-                                SizedBox(height: 5),
-                                EventListElement(),
-                                SizedBox(height: 5),
-                                EventListElement(),
-                                SizedBox(height: 5),
-                                EventListElement(),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Container(
-                            width: double.infinity,
-                            height: 181,
-                            padding: const EdgeInsets.all(5),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: const Color(0xFF737373),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
                               ),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  width: double.infinity,
-                                  child: Text(
-                                    'New event',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.only(
+                              const SizedBox(height: 5),
+                              TextField(
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Color(0xFF9F9E9E),
+                                  contentPadding: EdgeInsets.only(
                                     top: 3,
                                     left: 10,
                                     right: 249,
                                     bottom: 3,
                                   ),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF9F9E9E),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 0.50),
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
-                                  child: const Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Title:',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
+                                  hintText: 'Title:',
+                                  labelStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: double.infinity,
-                                  padding: const EdgeInsets.only(
+                              ),
+                              const SizedBox(height: 5),
+                              TextField(
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Color(0xFF9F9E9E),
+                                  contentPadding: EdgeInsets.only(
                                     top: 3,
                                     left: 10,
-                                    right: 216,
+                                    right: 249,
                                     bottom: 3,
                                   ),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF9F9E9E),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 0.50),
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
-                                  child: const Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Amount:',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
+                                  hintText: 'Amount:',
+                                  labelStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                    fontFamily: 'Francois One',
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                const SizedBox(height: 5),
-                                Container(
+                              ),
+                              const SizedBox(height: 5),
+                              GestureDetector(
+                                onTap: () {
+                                  // Handle button tap
+                                },
+                                child: Container(
                                   width: double.infinity,
                                   padding: const EdgeInsets.only(
                                     top: 3,
@@ -394,10 +383,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                   ),
-                                  child: const Row(
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         'Add event',
@@ -411,128 +401,106 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ],
                                   ),
                                 ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              height: 117,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0)),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: double.infinity,
+                      height: 80,
+                      padding: const EdgeInsets.symmetric(horizontal: 38),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(color: Color(0xFF737373)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xFFD9D9D9)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 160),
+                          SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration:
+                                        BoxDecoration(color: Color(0xFFD9D9D9)),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 4.2),
-                    Container(
-                      width: 360,
-                      height: 117,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(color: Colors.white.withOpacity(0)),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 0,
-                            top: 20,
-                            child: Container(
-                              width: 360,
-                              height: 80,
-                              padding: const EdgeInsets.symmetric(horizontal: 38),
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(color: Color(0xFF737373)),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 60,
-                                    height: 60,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          left: 0,
-                                          top: 0,
-                                          child: Container(
-                                            width: 60,
-                                            height: 60,
-                                            decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 160),
-                                  SizedBox(
-                                    width: 60,
-                                    height: 60,
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          left: 0,
-                                          top: 0,
-                                          child: Container(
-                                            width: 60,
-                                            height: 60,
-                                            decoration: BoxDecoration(color: Color(0xFFD9D9D9)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 143,
-                            top: 0,
-                            child: Container(
-                              width: 75,
-                              height: 75,
-                              decoration: const ShapeDecoration(
-                                color: Color(0xFF00B512),
-                                shape: OvalBorder(),
-                                shadows: [
-                                  BoxShadow(
-                                    color: Color(0x3F000000),
-                                    blurRadius: 4,
-                                    offset: Offset(0, 4),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 141,
-                            top: -1,
-                            child: SizedBox(
-                              width: 80,
-                              height: 80,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    left: 0,
-                                    top: 0,
-                                    child: Container(
-                                      width: 80,
-                                      height: 80,
-                                      decoration: ShapeDecoration(
-                                        color: Color(0xFFD9D9D9),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 75,
+                      height: 75,
+                      decoration: const ShapeDecoration(
+                        color: Color(0xFF00B512),
+                        shape: OvalBorder(),
+                        shadows: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
+                          )
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      )
-    );
+          )
+        ],
+      ),
+    ));
   }
 }
 
