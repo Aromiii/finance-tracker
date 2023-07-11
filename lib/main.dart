@@ -312,7 +312,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 const SizedBox(height: 5),
                                 Container(
-                                  width: 310,
+                                  width: double.infinity,
                                   padding: const EdgeInsets.only(
                                     top: 3,
                                     left: 10,
@@ -346,7 +346,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 const SizedBox(height: 5),
                                 Container(
-                                  width: 310,
+                                  width: double.infinity,
                                   padding: const EdgeInsets.only(
                                     top: 3,
                                     left: 10,
@@ -380,7 +380,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 const SizedBox(height: 5),
                                 Container(
-                                  width: 310,
+                                  width: double.infinity,
                                   padding: const EdgeInsets.only(
                                     top: 3,
                                     left: 100,
@@ -544,7 +544,7 @@ class EventListElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 310,
+      width: double.infinity,
       height: 35,
       padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
       clipBehavior: Clip.antiAlias,
