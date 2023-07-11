@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Container(
         clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(color: Color(0xFF2D2D2D)),
+        decoration: const BoxDecoration(color: Color(0xFF2D2D2D)),
         child: Stack(
           children: [
             Positioned(
@@ -112,13 +112,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 660,
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: double.infinity,
                             child: Text(
                               'Welcome <käyttäjän nimi>',
@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
-                                Positioned(
+                                const Positioned(
                                   left: 18,
                                   top: 67,
                                   child: Text(
@@ -189,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
-                                Positioned(
+                                const Positioned(
                                   left: 19,
                                   top: 11,
                                   child: Text(
@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 4,
@@ -251,7 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -268,201 +268,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: 310,
-                                  height: 35,
-                                  padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF737373),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Irtokarkit',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        '-13,20€',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: 310,
-                                  height: 35,
-                                  padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF737373),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Irtokarkit',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        '-13,20€',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: 310,
-                                  height: 35,
-                                  padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF737373),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Irtokarkit',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        '-13,20€',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: 310,
-                                  height: 35,
-                                  padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF737373),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Irtokarkit',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        '-13,20€',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Container(
-                                  width: 310,
-                                  height: 35,
-                                  padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: ShapeDecoration(
-                                    color: Color(0xFF737373),
-                                    shape: RoundedRectangleBorder(
-                                      side: BorderSide(width: 0.50),
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Irtokarkit',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      Text(
-                                        '-13,20€',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontFamily: 'Francois One',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                SizedBox(height: 5),
+                                EventListElement(),
+                                SizedBox(height: 5),
+                                EventListElement(),
+                                SizedBox(height: 5),
+                                EventListElement(),
+                                SizedBox(height: 5),
+                                EventListElement(),
+                                SizedBox(height: 5),
+                                EventListElement(),
                               ],
                             ),
                           ),
@@ -473,7 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.all(5),
                             clipBehavior: Clip.antiAlias,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF737373),
+                              color: const Color(0xFF737373),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -483,7 +298,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: double.infinity,
                                   child: Text(
                                     'New event',
@@ -512,7 +327,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -546,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -579,7 +394,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -717,6 +532,54 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       )
+    );
+  }
+}
+
+class EventListElement extends StatelessWidget {
+  const EventListElement({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 310,
+      height: 35,
+      padding: const EdgeInsets.only(top: 3, left: 9, right: 7, bottom: 4),
+      clipBehavior: Clip.antiAlias,
+      decoration: ShapeDecoration(
+        color: const Color(0xFF737373),
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 0.50),
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Irtokarkit',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: 'Francois One',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Text(
+            '-13,20€',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: 'Francois One',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
