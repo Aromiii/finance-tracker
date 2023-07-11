@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: 342,
                 height: 342,
-                decoration: ShapeDecoration(
+                decoration: const ShapeDecoration(
                   gradient: LinearGradient(
                     begin: Alignment(0.55, -0.84),
                     end: Alignment(-0.55, 0.84),
@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 660,
+                      height: 662,
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                       clipBehavior: Clip.antiAlias,
                       decoration: const BoxDecoration(),
@@ -284,7 +284,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           const SizedBox(height: 10),
                           Container(
                             width: double.infinity,
-                            height: 179,
+                            height: 181,
                             padding: const EdgeInsets.all(5),
                             clipBehavior: Clip.antiAlias,
                             decoration: ShapeDecoration(
@@ -417,10 +417,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 4.2),
                     Container(
                       width: 360,
-                      height: 100,
+                      height: 117,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(color: Colors.white.withOpacity(0)),
                       child: Stack(
@@ -439,7 +439,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 60,
                                     height: 60,
                                     child: Stack(
@@ -457,7 +457,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                   const SizedBox(width: 160),
-                                  Container(
+                                  SizedBox(
                                     width: 60,
                                     height: 60,
                                     child: Stack(
@@ -484,7 +484,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Container(
                               width: 75,
                               height: 75,
-                              decoration: ShapeDecoration(
+                              decoration: const ShapeDecoration(
                                 color: Color(0xFF00B512),
                                 shape: OvalBorder(),
                                 shadows: [
@@ -501,9 +501,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           Positioned(
                             left: 141,
                             top: -1,
-                            child: Container(
+                            child: SizedBox(
                               width: 80,
-                              height: 78.66,
+                              height: 80,
                               child: Stack(
                                 children: [
                                   Positioned(
@@ -511,7 +511,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     top: 0,
                                     child: Container(
                                       width: 80,
-                                      height: 78.66,
+                                      height: 80,
                                       decoration: ShapeDecoration(
                                         color: Color(0xFFD9D9D9),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
