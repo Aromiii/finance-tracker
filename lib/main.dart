@@ -1,6 +1,8 @@
+import 'package:finance_tracker/auth.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -477,22 +479,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Align(
                     alignment: Alignment.center,
-                    child: Container(
-                      width: 75,
-                      height: 75,
-                      decoration: const ShapeDecoration(
-                        color: Color(0xFF00B512),
-                        shape: OvalBorder(),
-                        shadows: [
-                          BoxShadow(
-                            color: Color(0x3F000000),
-                            blurRadius: 4,
-                            offset: Offset(0, 4),
-                            spreadRadius: 0,
-                          )
-                        ],
+                    child: ElevatedButton(
+                      onPressed: () {
+                        authService.signInWithGoogle();
+                      },
+                      child: Container(
+                        width: 75,
+                        height: 75,
+                        decoration: const ShapeDecoration(
+                          color: Color(0xFF00B512),
+                          shape: OvalBorder(),
+                          shadows: [
+                            BoxShadow(
+                              color: Color(0x3F000000),
+                              blurRadius: 4,
+                              offset: Offset(0, 4),
+                              spreadRadius: 0,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
+                    )
                   ),
                 ],
               ),
