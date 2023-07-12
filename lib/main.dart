@@ -182,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               const Positioned(
-                                left: 18,
+                                left: 15,
                                 top: 67,
                                 child: Text(
                                   'This month',
@@ -195,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               const Positioned(
-                                left: 19,
+                                left: 15,
                                 top: 11,
                                 child: Text(
                                   'Total',
@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Positioned(
-                                left: 226,
+                                right: 15,
                                 top: 67,
                                 child: Text(
                                   '423,34€',
@@ -221,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               Positioned(
-                                left: 197,
+                                right: 15,
                                 top: 11,
                                 child: Text(
                                   '12 343,56€',
