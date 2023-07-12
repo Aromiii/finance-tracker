@@ -274,15 +274,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               SizedBox(height: 5),
-                              EventListElement(),
+                              EventListElement(title: 'kissa', price: 'koira',),
                               SizedBox(height: 5),
-                              EventListElement(),
+                              EventListElement(title: 'kissa', price: 'koira',),
                               SizedBox(height: 5),
-                              EventListElement(),
+                              EventListElement(title: 'kissa', price: 'koira',),
                               SizedBox(height: 5),
-                              EventListElement(),
+                              EventListElement(title: 'kissa', price: 'koira',),
                               SizedBox(height: 5),
-                              EventListElement(),
+                              EventListElement(title: 'kissa', price: 'koira',),
                             ],
                           ),
                         ),
@@ -330,7 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     borderSide: BorderSide(width: 0.50),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  hintText: 'Title:',
+                                  hintText: 'Title',
                                   labelStyle: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24,
@@ -354,7 +354,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     borderSide: BorderSide(width: 0.50),
                                     borderRadius: BorderRadius.circular(15),
                                   ),
-                                  hintText: 'Amount:',
+                                  hintText: 'Amount',
                                   labelStyle: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24,
@@ -505,9 +505,13 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class EventListElement extends StatelessWidget {
+  final String title;
+  final String price;
+
   const EventListElement({
-    super.key,
-  });
+    required this.title,
+    required this.price,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -523,31 +527,35 @@ class EventListElement extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
       ),
-      child: const Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Irtokarkit',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontFamily: 'Francois One',
-              fontWeight: FontWeight.w400,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0), // Add horizontal padding
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Francois One',
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-          Text(
-            '-13,20€',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontFamily: 'Francois One',
-              fontWeight: FontWeight.w400,
+            Text(
+              price,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Francois One',
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
+
