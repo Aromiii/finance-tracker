@@ -4,25 +4,22 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 
 class AuthService {
-  // Dependencies
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
   // Shared State for Widgets
   Stream<User>? user; // firebase user
   BehaviorSubject loading = BehaviorSubject();
 
   // Constructor
   AuthService() {
-    user = _auth.currentUser as Stream<User>?;
+    user = FirebaseAuth.instance.currentUser as Stream<User>?;
   }
 
   Future<User?> signInWithGoogle() async {
     loading.add(true);
 
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
+    print("kissa");
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 

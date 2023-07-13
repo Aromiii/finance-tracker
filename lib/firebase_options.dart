@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyALptqEfa8KxSnH8VXV-17-HSiANHnEISM',
-    appId: '1:236729608522:android:c55e568a1dfe8ed523f9b3',
+    appId: '1:236729608522:android:a6561ff955a4f96b23f9b3',
     messagingSenderId: '236729608522',
     projectId: 'finance-tracker-a6be7',
     storageBucket: 'finance-tracker-a6be7.appspot.com',
@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCZlM5mylW1F2-87L4S2ZrTJOs4eQWiVVs',
-    appId: '1:236729608522:ios:0a119538b6db300423f9b3',
+    appId: '1:236729608522:ios:d4e9bac35d2f960023f9b3',
     messagingSenderId: '236729608522',
     projectId: 'finance-tracker-a6be7',
     storageBucket: 'finance-tracker-a6be7.appspot.com',
+    androidClientId: '236729608522-rd5c4tc5a5b1ci5u60k2b2apssu966o3.apps.googleusercontent.com',
     iosClientId: '236729608522-66h7c4fei4hrv4954236nr8rshgvbenv.apps.googleusercontent.com',
     iosBundleId: 'com.example.financeTracker',
   );
