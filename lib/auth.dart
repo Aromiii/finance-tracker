@@ -5,12 +5,12 @@ import 'dart:async';
 
 class AuthService {
   // Shared State for Widgets
-  Stream<User>? user; // firebase user
+  Stream<User?>? user; // firebase user
   BehaviorSubject loading = BehaviorSubject();
 
   // Constructor
   AuthService() {
-    user = FirebaseAuth.instance.currentUser as Stream<User>?;
+    user = FirebaseAuth.instance.authStateChanges();
   }
 
   Future<User?> signInWithGoogle() async {
@@ -38,7 +38,7 @@ class AuthService {
   }
 
   void signOut() {
-    // Implement sign out logic here
+    FirebaseAuth.instance.signOut();
   }
 }
 
