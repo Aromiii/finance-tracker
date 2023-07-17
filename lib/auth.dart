@@ -6,11 +6,15 @@ import 'dart:async';
 class AuthService {
   // Shared State for Widgets
   Stream<User?>? user; // firebase user
-  BehaviorSubject loading = BehaviorSubject();
+  BehaviorSubject<User?> currentUser = BehaviorSubject<User?>(); // Represents the current user
+  BehaviorSubject<bool> loading = BehaviorSubject<bool>();
 
   // Constructor
   AuthService() {
     user = FirebaseAuth.instance.authStateChanges();
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      currentUser.add(user); // Update the currentUser BehaviorSubject with the received user
+    });
   }
 
   Future<User?> signInWithGoogle() async {
@@ -19,7 +23,6 @@ class AuthService {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    print("kissa");
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
@@ -32,7 +35,6 @@ class AuthService {
     // Once signed in, return the UserCredential
     final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
 
-    print(userCredential.user);
     loading.add(false);
     return userCredential.user;
   }
@@ -41,6 +43,5 @@ class AuthService {
     FirebaseAuth.instance.signOut();
   }
 }
-
 
 final AuthService authService = AuthService();

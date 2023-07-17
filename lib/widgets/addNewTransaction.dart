@@ -12,29 +12,28 @@ class AddNewTransaction extends StatelessWidget {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
 
+  void createDocument() async {
+    String title = _titleController.text;
+    double amount = double.tryParse(_amountController.text) ?? 0.0;
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(authService.currentUser.value?.uid)
+          .collection('transactions')
+          .add({
+        'title': title,
+        'amount': amount,
+        "createdAt": DateTime.now()
+      });
+      print('Document created successfully!');
+    } catch (e) {
+      print('Error creating document: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    void createDocument() async {
-      String title = _titleController.text;
-      double amount = double.tryParse(_amountController.text) ?? 0.0;
-
-      User? user = await authService.user?.first;
-      try {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user?.uid)
-            .collection('transactions')
-            .add({
-          'title': title,
-          'amount': amount,
-          "createdAt": DateTime.now()
-        });
-        print('Document created successfully!');
-      } catch (e) {
-        print('Error creating document: $e');
-      }
-    }
-
     return Container(
       width: double.infinity,
       height: 195,
