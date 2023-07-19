@@ -1,8 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finance_tracker/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../database.dart';
 
 class AddNewTransaction extends StatelessWidget {
   AddNewTransaction({
@@ -11,26 +8,6 @@ class AddNewTransaction extends StatelessWidget {
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
-
-  void createDocument() async {
-    String title = _titleController.text;
-    double amount = double.tryParse(_amountController.text) ?? 0.0;
-
-    try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(authService.currentUser.value?.uid)
-          .collection('transactions')
-          .add({
-        'title': title,
-        'amount': amount,
-        "createdAt": DateTime.now()
-      });
-      print('Document created successfully!');
-    } catch (e) {
-      print('Error creating document: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +91,9 @@ class AddNewTransaction extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           GestureDetector(
-            onTap: createDocument,
+            onTap: () {
+              db.addNewTransaction(_titleController.text, double.tryParse(_amountController.text) ?? 0.0);
+            },
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.only(

@@ -44,4 +44,4 @@ class AuthService {
   }
 }
 
-final AuthService authService = AuthService();
+final AuthService auth = AuthService();

@@ -18,7 +18,7 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
   }
 
   Future<void> fetchData() async {
-    User? user = await authService.user?.first;
+    User? user = await auth.user?.first;
     final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('users')
         .doc(user?.uid)
