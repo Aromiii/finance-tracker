@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          MoneySummary(),
+                          const MoneySummary(),
                           const SizedBox(height: 10),
                           LastFiveTransactions(),
                           const SizedBox(height: 10),

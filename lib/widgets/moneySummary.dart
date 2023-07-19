@@ -13,7 +13,7 @@ class MoneySummary extends StatelessWidget {
       height: 113,
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: Color(0xFF737373),
+        color: const Color(0xFF737373),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -87,8 +87,8 @@ class MoneySummary extends StatelessWidget {
             right: 15,
             top: 67,
             child: Text(
-              '423.34€',
-              style: TextStyle(
+              "${db.monthMoney.value.toString()}€",
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontFamily: 'Francois One',
@@ -100,8 +100,8 @@ class MoneySummary extends StatelessWidget {
             right: 15,
             top: 11,
             child: Text(
-              "${db.money.value.toString()}€",
-              style: TextStyle(
+              "${db.totalMoney.value.toString()}€",
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontFamily: 'Francois One',
