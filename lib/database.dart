@@ -13,8 +13,10 @@ class Database {
   Database() {
     auth.user?.listen((event) async {
       if (event != null) {
-        await getCurrentMoneyOfTransactions(event);
-        await getCurrentMoneyOfLastMonthTransactions(event);
+        Future.wait([
+          getCurrentMoneyOfTransactions(event),
+          getCurrentMoneyOfLastMonthTransactions(event),
+        ]);
       }
     });
   }
