@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../database.dart';
 
 class AddNewTransaction extends StatelessWidget {
@@ -67,6 +68,11 @@ class AddNewTransaction extends StatelessWidget {
           const SizedBox(height: 5),
           TextField(
             controller: _amountController,
+            keyboardType:
+                TextInputType.numberWithOptions(signed: true, decimal: true, ),
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9.-]')),
+            ],
             decoration: InputDecoration(
               filled: true,
               fillColor: Color(0xFF9F9E9E),
@@ -92,7 +98,8 @@ class AddNewTransaction extends StatelessWidget {
           const SizedBox(height: 5),
           GestureDetector(
             onTap: () {
-              db.addNewTransaction(_titleController.text, double.tryParse(_amountController.text) ?? 0.0);
+              db.addNewTransaction(_titleController.text,
+                  double.tryParse(_amountController.text) ?? 0.0);
             },
             child: Container(
               width: double.infinity,
