@@ -9,15 +9,15 @@ class LastFiveTransactions extends StatefulWidget {
 }
 
 class _LastFiveTransactionsState extends State<LastFiveTransactions> {
-  List<Map<String, dynamic>> eventData = [];
+  List<Map<String, dynamic>> transactionData = [];
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    fetchTransactions();
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchTransactions() async {
     User? user = await auth.user?.first;
     final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('users')
@@ -28,7 +28,7 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
         .get();
 
     setState(() {
-      eventData = querySnapshot.docs.map<Map<String, dynamic>>((doc) => doc.data() as Map<String, dynamic>).toList();
+      transactionData = querySnapshot.docs.map<Map<String, dynamic>>((doc) => doc.data() as Map<String, dynamic>).toList();
     });
   }
 
@@ -60,7 +60,7 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
           SizedBox(
             width: double.infinity,
             child: Text(
-              'Last events',
+              'Last transactions',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -71,12 +71,12 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
           ),
           SizedBox(height: 5),
           Column(
-            children: eventData.map((event) {
+            children: transactionData.map((transaction) {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 3.0),
                 child: EventListElement(
-                  title: event['title'],
-                  price: "${event['amount']}€",
+                  title: transaction['title'],
+                  price: "${transaction['amount']}€",
                 ),
               );
             }).toList(),

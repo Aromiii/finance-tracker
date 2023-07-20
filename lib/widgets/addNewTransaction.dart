@@ -31,7 +31,7 @@ class AddNewTransaction extends StatelessWidget {
           const SizedBox(
             width: double.infinity,
             child: Text(
-              'New event',
+              'New transaction',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -122,7 +122,7 @@ class AddNewTransaction extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Add event',
+                    'Add transaction',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
