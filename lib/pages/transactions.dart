@@ -72,25 +72,16 @@ class _TransactionsPageState extends State<TransactionsPage> {
               padding: const EdgeInsets.all(5),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
-                color: Color(0xFF737373),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
-                shadows: [
-                  BoxShadow(
-                    color: Color(0x3F000000),
-                    blurRadius: 4,
-                    offset: Offset(0, 4),
-                    spreadRadius: 0,
-                  )
-                ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  Container(
                     width: double.infinity,
                     child: Text(
                       'Last transactions',
@@ -104,7 +95,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                   Column(
                     children: transactionData.map((transaction) {
                       return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 3.0),
+                        padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: AllLastTransactionsListWidget(
                           title: transaction['title'],
                           amount: "${transaction['amount']}€",
@@ -248,6 +239,14 @@ class AllLastTransactionsListWidget extends StatelessWidget {
           side: BorderSide(width: 0.50),
           borderRadius: BorderRadius.circular(15),
         ),
+        shadows: [
+          BoxShadow(
+            color: Color(0x3F000000),
+            blurRadius: 4,
+            offset: Offset(0, 4),
+            spreadRadius: 0,
+          )
+        ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
