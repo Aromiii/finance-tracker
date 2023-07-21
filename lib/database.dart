@@ -66,6 +66,9 @@ class Database {
       }
     }
 
+    // Round the "sum" to two decimal places
+    sum = double.parse(sum.toStringAsFixed(2));
+
     monthMoney.add(sum);
   }
 

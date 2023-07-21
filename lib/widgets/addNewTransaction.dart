@@ -14,7 +14,6 @@ class AddNewTransaction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 195,
       padding: const EdgeInsets.all(5),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
@@ -69,25 +68,25 @@ class AddNewTransaction extends StatelessWidget {
           TextField(
             controller: _amountController,
             keyboardType:
-                TextInputType.numberWithOptions(signed: true, decimal: true, ),
+                const TextInputType.numberWithOptions(signed: true, decimal: true, ),
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.allow(RegExp(r'[0-9.-]')),
             ],
             decoration: InputDecoration(
               filled: true,
-              fillColor: Color(0xFF9F9E9E),
-              contentPadding: EdgeInsets.only(
+              fillColor: const Color(0xFF9F9E9E),
+              contentPadding: const EdgeInsets.only(
                 top: 3,
                 left: 10,
                 right: 249,
                 bottom: 3,
               ),
               border: OutlineInputBorder(
-                borderSide: BorderSide(width: 0.50),
+                borderSide: const BorderSide(width: 0.50),
                 borderRadius: BorderRadius.circular(15),
               ),
               hintText: 'Amount',
-              labelStyle: TextStyle(
+              labelStyle: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontFamily: 'Francois One',
@@ -104,10 +103,8 @@ class AddNewTransaction extends StatelessWidget {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.only(
-                top: 3,
-                left: 100,
-                right: 110,
-                bottom: 3,
+                top: 7,
+                bottom: 7,
               ),
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
@@ -116,7 +113,7 @@ class AddNewTransaction extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
