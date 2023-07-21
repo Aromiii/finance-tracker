@@ -64,8 +64,6 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),

@@ -34,8 +34,6 @@ class AddNewTransaction extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -59,8 +57,6 @@ class AddNewTransaction extends StatelessWidget {
               labelStyle: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -89,8 +85,7 @@ class AddNewTransaction extends StatelessWidget {
               labelStyle: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
+
               ),
             ),
           ),
@@ -123,8 +118,6 @@ class AddNewTransaction extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
-                      fontFamily: 'Francois One',
-                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],

@@ -65,8 +65,6 @@ class MoneySummary extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -78,8 +76,6 @@ class MoneySummary extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -91,8 +87,6 @@ class MoneySummary extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -104,8 +98,6 @@ class MoneySummary extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-                fontFamily: 'Francois One',
-                fontWeight: FontWeight.w400,
               ),
             ),
           ),
