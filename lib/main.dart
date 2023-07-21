@@ -51,59 +51,60 @@ class MyApp extends StatelessWidget {
               left: 0,
               top: 0,
               child: Flexible(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 676,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 30),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            child: StreamBuilder<User?>(
-                              stream: auth.user,
-                              builder: (context, snapshot) {
-                                if (snapshot.hasData && snapshot.data != null) {
-                                  // Display the data from the stream
-                                  return Text(
-                                    'Welcome ${snapshot.data?.displayName}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      fontFamily: 'Francois One',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  );
-                                } else if (snapshot.hasError) {
-                                  // Handle stream error
-                                  return Text('Error: ${snapshot.error}');
-                                } else {
-                                  // Show a loading indicator while waiting for data
-                                  return CircularProgressIndicator();
-                                }
-                              },
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 676,
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              child: StreamBuilder<User?>(
+                                stream: auth.user,
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData && snapshot.data != null) {
+                                    // Display the data from the stream
+                                    return Text(
+                                      'Welcome ${snapshot.data?.displayName}',
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontFamily: 'Francois One',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    );
+                                  } else if (snapshot.hasError) {
+                                    // Handle stream error
+                                    return Text('Error: ${snapshot.error}');
+                                  } else {
+                                    // Show a loading indicator while waiting for data
+                                    return CircularProgressIndicator();
+                                  }
+                                },
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          const MoneySummary(),
-                          const SizedBox(height: 10),
-                          LastFiveTransactions(),
-                          const SizedBox(height: 10),
-                          AddNewTransaction(),
-                        ],
+                            const SizedBox(height: 10),
+                            const MoneySummary(),
+                            const SizedBox(height: 10),
+                            LastFiveTransactions(),
+                            const SizedBox(height: 10),
+                            AddNewTransaction(),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
