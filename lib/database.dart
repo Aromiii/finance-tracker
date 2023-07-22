@@ -80,7 +80,7 @@ class Database {
       if (moneyValue != null) {
         // Process the money value as a double
         // Do something with the 'moneyValue'
-        totalMoney.add(moneyValue);
+        totalMoney.add(double.parse(moneyValue.toStringAsFixed(2)));
       }
     }
   }

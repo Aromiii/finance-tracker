@@ -13,15 +13,23 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
 
   @override
   void initState() {
-    super.initState();
+    print("initstate");
     fetchTransactions();
   }
 
   Future<void> fetchTransactions() async {
-    User? user = await auth.user?.first;
+    String uid = "";
+
+    if (auth.currentUser.valueOrNull == null) {
+      User? user = await auth.user?.first;
+      uid = user?.uid ?? "";
+    } else {
+      uid = auth.currentUser.value?.uid ?? "";
+    }
+
     final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('users')
-        .doc(user?.uid)
+        .doc(uid)
         .collection("transactions")
         .orderBy('createdAt', descending: true)
         .limit(5)
