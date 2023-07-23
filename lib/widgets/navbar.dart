@@ -157,8 +157,14 @@ class Navbar extends StatelessWidget {
                         )
                       ],
                     ),
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 75,
+                    )
                   ),
-                )),
+                )
+            ),
           ],
         ),
       ),
