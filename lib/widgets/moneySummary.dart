@@ -82,23 +82,55 @@ class MoneySummary extends StatelessWidget {
           Positioned(
             right: 15,
             top: 67,
-            child: Text(
-              "${db.monthMoney.value.toString()}€",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: StreamBuilder<double>(
+              stream: db.monthMoney.stream, // Listen to changes in the BehaviorSubject
+              initialData: db.monthMoney.value, // Set initial data (0.0 in this case)
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    "${snapshot.data.toString()}€",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  );
+                }
+
+                return Text(
+                  "N/A",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                );
+              },
             ),
           ),
           Positioned(
             right: 15,
             top: 11,
-            child: Text(
-              "${db.totalMoney.value.toString()}€",
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: StreamBuilder<double>(
+              stream: db.totalMoney.stream, // Listen to changes in the BehaviorSubject
+              initialData: db.totalMoney.value, // Set initial data (0.0 in this case)
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    "${snapshot.data.toString()}€",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  );
+                }
+
+                return Text(
+                  "N/A",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                );
+              },
             ),
           ),
         ],

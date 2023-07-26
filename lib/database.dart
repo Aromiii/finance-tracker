@@ -11,11 +11,11 @@ class Database {
 
 
   Database() {
-    auth.user?.listen((event) async {
-      if (event != null) {
+    auth.user?.listen((user) async {
+      if (user != null) {
         Future.wait([
-          getCurrentMoneyOfTransactions(event),
-          getCurrentMoneyOfLastMonthTransactions(event),
+          getCurrentMoneyOfTransactions(user),
+          getCurrentMoneyOfLastMonthTransactions(user),
         ]);
       }
     });
