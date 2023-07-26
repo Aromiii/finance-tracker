@@ -2,6 +2,7 @@ import 'package:finance_tracker/pages/home.dart';
 import 'package:flutter/material.dart';
 
 import '../auth.dart';
+import '../pages/auth.dart';
 import '../pages/transactions.dart';
 
 class Navbar extends StatelessWidget {
@@ -112,7 +113,11 @@ class Navbar extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // Add onTap function for the second container
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AuthPage()),
+                            );
                           },
                           child: Container(
                             width: 60,
