@@ -1,7 +1,6 @@
 import 'package:finance_tracker/pages/home.dart';
 import 'package:flutter/material.dart';
 
-import '../auth.dart';
 import '../pages/auth.dart';
 import '../pages/transactions.dart';
 
@@ -145,7 +144,7 @@ class Navbar extends StatelessWidget {
                 alignment: Alignment.center,
                 child: GestureDetector(
                   onTap: () {
-                    auth.signInWithGoogle();
+
                   },
                   child: Container(
                     width: 75,
