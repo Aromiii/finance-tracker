@@ -26,9 +26,9 @@ class Database {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(auth.currentUser.value?.uid)
-          .update({
+          .set({
         "money": FieldValue.increment(amount)
-      });
+      }, SetOptions(merge: true));
 
       await FirebaseFirestore.instance
           .collection('users')
