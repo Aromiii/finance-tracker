@@ -1,8 +1,9 @@
-import 'package:finance_tracker/pages/home.dart';
+import 'package:finance_tracker/pages/addPage.dart';
+import 'package:finance_tracker/pages/homePage.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/auth.dart';
-import '../pages/transactions.dart';
+import '../pages/authPage.dart';
+import '../pages/transactionsPage.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({
@@ -144,7 +145,11 @@ class Navbar extends StatelessWidget {
                 alignment: Alignment.center,
                 child: GestureDetector(
                   onTap: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddPage()),
+                    );
                   },
                   child: Container(
                     width: 75,

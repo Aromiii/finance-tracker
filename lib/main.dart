@@ -1,5 +1,5 @@
 import 'package:finance_tracker/firebase_options.dart';
-import 'package:finance_tracker/pages/home.dart';
+import 'package:finance_tracker/pages/homePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

@@ -26,18 +26,24 @@ class _TransactionsPageState extends State<TransactionsPage> {
           .collection('users')
           .doc(auth.currentUser.value?.uid)
           .collection('transactions')
+          .orderBy('createdAt', descending: true)
           .get();
 
       List<Widget> transactions = querySnapshot.docs.map((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         String title = data['title'];
         String amount = data['amount'].toString();
+        String desc = data['desc'] ?? "";
 
-        return AllLastTransactionsListWidget(title: title, amount: amount);
+        return AllLastTransactionsListWidget(
+            title: title, amount: amount, desc: desc);
       }).toList();
 
       setState(() {
-        transactionData = querySnapshot.docs.map<Map<String, dynamic>>((doc) => doc.data() as Map<String, dynamic>).toList();
+        transactionData = querySnapshot.docs
+            .map<Map<String, dynamic>>(
+                (doc) => doc.data() as Map<String, dynamic>)
+            .toList();
       });
     } catch (e) {
       print('Error fetching transactions: $e');
@@ -98,12 +104,13 @@ class _TransactionsPageState extends State<TransactionsPage> {
                       return Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: AllLastTransactionsListWidget(
-                          title: transaction['title'],
-                          amount: "${transaction['amount']}€",
-                        ),
+                            title: transaction['title'],
+                            amount: "${transaction['amount']}€",
+                            desc: transaction['desc'] ?? ""),
                       );
                     }).toList(),
                   ),
+                  const SizedBox(height: 60)
                 ],
               ),
             ),
@@ -119,10 +126,12 @@ class AllLastTransactionsListWidget extends StatelessWidget {
   const AllLastTransactionsListWidget({
     required this.title,
     required this.amount,
+    required this.desc,
   });
 
   final String title;
   final String amount;
+  final String desc;
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +175,6 @@ class AllLastTransactionsListWidget extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                const SizedBox(width: 139),
                 Text(
                   amount,
                   style: TextStyle(
@@ -177,24 +185,32 @@ class AllLastTransactionsListWidget extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                side: BorderSide(
-                  width: 0.50,
-                  color: Color(0xFF565656),
+          Visibility(
+            visible: desc != "",
+            // Replace 'shouldShow' with your boolean condition here
+            child: Container(
+              width: double.infinity,
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    width: 0.50,
+                    color: Color(0xFF565656),
+                  ),
                 ),
               ),
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              "Tässä on jotain turhaa jorinaa ennen kuin descit on oikea asia mikä on databasessa",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
+          Visibility(
+            visible: desc != "",
+            // Replace 'shouldShow' with your boolean condition here
+            child: SizedBox(
+              width: double.infinity,
+              child: Text(
+                desc,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),

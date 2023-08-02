@@ -21,7 +21,7 @@ class Database {
     });
   }
 
-  void addNewTransaction(String title, double amount) async {
+  void addNewTransaction(String title, double amount, String desc) async {
     try {
       await FirebaseFirestore.instance
           .collection('users')
@@ -37,6 +37,7 @@ class Database {
           .add({
         'title': title,
         'amount': amount,
+        'desc': desc,
         "createdAt": DateTime.now()
       });
       print('Document created successfully!');

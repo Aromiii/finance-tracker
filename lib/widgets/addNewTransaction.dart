@@ -63,8 +63,10 @@ class AddNewTransaction extends StatelessWidget {
           const SizedBox(height: 5),
           TextField(
             controller: _amountController,
-            keyboardType:
-                const TextInputType.numberWithOptions(signed: true, decimal: true, ),
+            keyboardType: const TextInputType.numberWithOptions(
+              signed: true,
+              decimal: true,
+            ),
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.allow(RegExp(r'[0-9.-]')),
             ],
@@ -85,7 +87,6 @@ class AddNewTransaction extends StatelessWidget {
               labelStyle: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
-
               ),
             ),
           ),
@@ -93,7 +94,7 @@ class AddNewTransaction extends StatelessWidget {
           GestureDetector(
             onTap: () {
               db.addNewTransaction(_titleController.text,
-                  double.tryParse(_amountController.text) ?? 0.0);
+                  double.tryParse(_amountController.text) ?? 0.0, "");
             },
             child: Container(
               width: double.infinity,
