@@ -1,45 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finance_tracker/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:finance_tracker/database.dart';
 import 'package:flutter/material.dart';
 
-class LastFiveTransactions extends StatefulWidget {
-  @override
-  _LastFiveTransactionsState createState() => _LastFiveTransactionsState();
-}
-
-class _LastFiveTransactionsState extends State<LastFiveTransactions> {
-  List<Map<String, dynamic>> transactionData = [];
-
-  @override
-  void initState() {
-    print("initstate");
-    fetchTransactions();
-  }
-
-  Future<void> fetchTransactions() async {
-    String uid = "";
-
-    if (auth.currentUser.valueOrNull == null) {
-      User? user = await auth.user?.first;
-      uid = user?.uid ?? "";
-    } else {
-      uid = auth.currentUser.value?.uid ?? "";
-    }
-
-    final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .collection("transactions")
-        .orderBy('createdAt', descending: true)
-        .limit(5)
-        .get();
-
-    setState(() {
-      transactionData = querySnapshot.docs.map<Map<String, dynamic>>((doc) => doc.data() as Map<String, dynamic>).toList();
-    });
-  }
-
+class LastFiveTransactions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -76,17 +38,33 @@ class _LastFiveTransactionsState extends State<LastFiveTransactions> {
             ),
           ),
           SizedBox(height: 5),
-          Column(
-            children: transactionData.map((transaction) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 3.0),
-                child: EventListElement(
-                  title: transaction['title'],
-                  price: "${transaction['amount']}€",
-                ),
-              );
-            }).toList(),
-          ),
+          StreamBuilder<List<Transaction>>(
+            stream: db.transactions.stream,
+            // Listen to changes in the BehaviorSubject
+            initialData: db.transactions.value,
+            // Set initial data
+            builder: (context, snapshot) {
+              if (snapshot.data != []) {
+                List<Transaction> transactions =
+                    snapshot.data as List<Transaction>;
+                return Column(
+                  children: transactions
+                      .map(
+                        (transaction) => Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 0),
+                            child: EventListElement(
+                                title: transaction.title,
+                                price: "${transaction.amount}€")),
+                      )
+                      .toList(),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          )
         ],
       ),
     );
@@ -148,4 +126,3 @@ class EventListElement extends StatelessWidget {
     );
   }
 }
-
