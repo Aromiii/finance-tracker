@@ -15,7 +15,8 @@ class Database {
   FirebaseFirestore instance = FirebaseFirestore.instance;
   BehaviorSubject<double> totalMoney = BehaviorSubject<double>.seeded(0.0);
   BehaviorSubject<double> monthMoney = BehaviorSubject<double>.seeded(0.0);
-  BehaviorSubject<List<Transaction>> transactions = BehaviorSubject<List<Transaction>>.seeded([]);
+  BehaviorSubject<List<Transaction>> transactions = BehaviorSubject<
+      List<Transaction>>.seeded([]);
 
   Database() {
     auth.user?.listen((user) async {
@@ -81,6 +82,9 @@ class Database {
       List<Transaction> currentList = transactions.value;
       currentList.add(Transaction(title, amount, desc));
       transactions.add(currentList);
+
+      getCurrentMoneyOfTransactions(auth.currentUser.value as User);
+      getCurrentMoneyOfLastMonthTransactions(auth.currentUser.value as User);
     } catch (e) {
       print('Error creating document: $e');
     }
