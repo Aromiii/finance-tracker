@@ -1,54 +1,10 @@
 import 'package:finance_tracker/widgets/navbar.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../auth.dart';
+import '../database.dart';
 
-class TransactionsPage extends StatefulWidget {
+class TransactionsPage extends StatelessWidget {
   const TransactionsPage({super.key});
-
-  @override
-  _TransactionsPageState createState() => _TransactionsPageState();
-}
-
-class _TransactionsPageState extends State<TransactionsPage> {
-  List<Map<String, dynamic>> transactionData = [];
-
-  @override
-  void initState() {
-    super.initState();
-    fetchTransactions();
-  }
-
-  void fetchTransactions() async {
-    try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(auth.currentUser.value?.uid)
-          .collection('transactions')
-          .orderBy('createdAt', descending: true)
-          .get();
-
-      List<Widget> transactions = querySnapshot.docs.map((doc) {
-        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-        String title = data['title'];
-        String amount = data['amount'].toString();
-        String desc = data['desc'] ?? "";
-
-        return AllLastTransactionsListWidget(
-            title: title, amount: amount, desc: desc);
-      }).toList();
-
-      setState(() {
-        transactionData = querySnapshot.docs
-            .map<Map<String, dynamic>>(
-                (doc) => doc.data() as Map<String, dynamic>)
-            .toList();
-      });
-    } catch (e) {
-      print('Error fetching transactions: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,13 +56,13 @@ class _TransactionsPageState extends State<TransactionsPage> {
                   ),
                   const SizedBox(height: 5),
                   Column(
-                    children: transactionData.map((transaction) {
+                    children: db.transactions.value.map((transaction) {
                       return Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: AllLastTransactionsListWidget(
-                            title: transaction['title'],
-                            amount: "${transaction['amount']}€",
-                            desc: transaction['desc'] ?? ""),
+                            title: transaction.title,
+                            amount: transaction.amount.toString(),
+                            desc: transaction.desc ?? ""),
                       );
                     }).toList(),
                   ),

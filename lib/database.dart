@@ -7,8 +7,9 @@ class Transaction {
   String title;
   double amount;
   String desc = "";
+  DateTime createdAt;
 
-  Transaction(this.title, this.amount, this.desc);
+  Transaction(this.title, this.amount, this.desc, this.createdAt);
 }
 
 class Database {
@@ -21,8 +22,8 @@ class Database {
   Database() {
     auth.user?.listen((user) async {
       if (user != null) {
+        await fetchTransactions();
         Future.wait([
-          fetchTransactions(),
           getCurrentMoneyOfTransactions(user),
           getCurrentMoneyOfLastMonthTransactions(user),
         ]);
@@ -50,7 +51,7 @@ class Database {
 
     transactions.add(querySnapshot.docs.map<Transaction>((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      return Transaction(data['title'], data['amount'], data['desc']);
+      return Transaction(data['title'], data['amount'], data['desc'], data['createdAt'].toDate());
     }).toList());
   }
 
@@ -80,7 +81,7 @@ class Database {
       });
 
       List<Transaction> currentList = transactions.value;
-      currentList.add(Transaction(title, amount, desc));
+      currentList.add(Transaction(title, amount, desc, DateTime.now()));
       transactions.add(currentList);
 
       getCurrentMoneyOfTransactions(auth.currentUser.value as User);
@@ -95,27 +96,14 @@ class Database {
     final DateTime thirtyDaysAgo = currentDate.subtract(
         const Duration(days: 30));
 
-    final QuerySnapshot snapshot = await instance
-        .collection("users")
-        .doc(user.uid)
-        .collection("transactions")
-        .where('createdAt', isGreaterThanOrEqualTo: thirtyDaysAgo)
-        .where('createdAt', isLessThanOrEqualTo: currentDate)
-        .get();
-
     double sum = 0.0;
-    for (var doc in snapshot.docs) {
-      Map<String, dynamic>? docData = doc.data() as Map<String,
-          dynamic>?; // Explicit casting to Map<String, dynamic>
-      final amount = docData?["amount"] as num?;
-      if (amount != null) {
-        sum += amount.toDouble();
+    for (var transaction in transactions.value) {
+      if (transaction.createdAt.isBefore(currentDate) && transaction.createdAt.isAfter(thirtyDaysAgo)) {
+        sum += transaction.amount;
       }
     }
 
-    // Round the "sum" to two decimal places
     sum = double.parse(sum.toStringAsFixed(2));
-
     monthMoney.add(sum);
   }
 
