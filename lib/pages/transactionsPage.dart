@@ -62,7 +62,7 @@ class TransactionsPage extends StatelessWidget {
                         child: AllLastTransactionsListWidget(
                             title: transaction.title,
                             amount: transaction.amount.toString(),
-                            desc: transaction.desc ?? ""),
+                            desc: transaction.desc),
                       );
                     }).toList(),
                   ),

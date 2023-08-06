@@ -1,28 +1,51 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../database.dart';
 import '../widgets/moneySummary.dart';
 import '../widgets/navbar.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({super.key});
 
+  List<FlSpot> generateSpots() {
+    List<FlSpot> flSpots = [];
+
+    final DateTime currentDate = DateTime.now();
+    final DateTime thirtyDaysAgo = currentDate.subtract(
+        const Duration(days: 30));
+
+    List<Transaction> transactions = db.transactions.value;
+
+    double sum = 0.0;
+    for (int index = 0; index < transactions.length; index++) {
+      var transaction = transactions[index];
+      if (transaction.createdAt.isBefore(currentDate) &&
+          transaction.createdAt.isAfter(thirtyDaysAgo)) {
+        sum += transaction.amount;
+        flSpots.add(FlSpot(index.toDouble(), sum));
+      }
+    }
+
+    return flSpots;
+  }
+
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
         fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white);
     Widget text;
     switch (value.toInt()) {
+      case 0:
+        text = const Text('1.', style: style);
+        break;
+      case 1:
+        text = const Text('9.', style: style);
+        break;
       case 2:
-        text = const Text('MAR', style: style);
-        break;
-      case 5:
-        text = const Text('JUN', style: style);
-        break;
-      case 8:
-        text = const Text('SEP', style: style);
+        text = const Text('18.', style: style);
         break;
       default:
-        text = const Text('', style: style);
+        text = const Text('27.', style: style);
         break;
     }
 
@@ -37,14 +60,14 @@ class StatisticsPage extends StatelessWidget {
         fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white);
     String text;
     switch (value.toInt()) {
-      case 1:
-        text = '-1k €';
+      case -10:
+        text = '-10€';
         break;
-      case 3:
-        text = '1k €';
+      case 10:
+        text = '10€';
         break;
-      case 5:
-        text = '3k €';
+      case 30:
+        text = '30€';
         break;
       default:
         return Container();
@@ -113,7 +136,7 @@ class StatisticsPage extends StatelessWidget {
                         gridData: FlGridData(
                           show: true,
                           drawVerticalLine: true,
-                          horizontalInterval: 1,
+                          horizontalInterval: 10,
                           verticalInterval: 1,
                           getDrawingHorizontalLine: (value) {
                             return const FlLine(
@@ -153,22 +176,13 @@ class StatisticsPage extends StatelessWidget {
                           show: true,
                           border: Border.all(color: Colors.white),
                         ),
-                        minY: 0,
-                        maxY: 6,
+                        maxY: 40,
+                        minY: -20,
                         lineBarsData: [
                           LineChartBarData(
                             color: Color(0xFF00B512),
-                            spots: const [
-                              FlSpot(0, 3),
-                              FlSpot(2.6, 2),
-                              FlSpot(4.9, 5),
-                              FlSpot(6.8, 3.1),
-                              FlSpot(8, 4),
-                              FlSpot(9.5, 3),
-                              FlSpot(11, 4),
-                            ],
-                            isCurved: true,
-                            barWidth: 5,
+                            spots: generateSpots(),
+                            barWidth: 3,
                             isStrokeCapRound: true,
                             dotData: const FlDotData(
                               show: false,
