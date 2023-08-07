@@ -12,8 +12,8 @@ class StatisticsPage extends StatelessWidget {
     List<FlSpot> flSpots = [];
 
     final DateTime currentDate = DateTime.now();
-    final DateTime thirtyDaysAgo = currentDate.subtract(
-        const Duration(days: 30));
+    final DateTime thirtyDaysAgo =
+        currentDate.subtract(const Duration(days: 30));
 
     List<Transaction> transactions = db.transactions.value;
 
@@ -109,9 +109,9 @@ class StatisticsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Statistics",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
                       fontFamily: 'Francois One',
@@ -123,7 +123,6 @@ class StatisticsPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Container(
                       width: double.infinity,
-                      height: 200,
                       padding: const EdgeInsets.all(10),
                       clipBehavior: Clip.antiAlias,
                       decoration: ShapeDecoration(
@@ -132,68 +131,86 @@ class StatisticsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      child: LineChart(LineChartData(
-                        gridData: FlGridData(
-                          show: true,
-                          drawVerticalLine: true,
-                          horizontalInterval: 10,
-                          verticalInterval: 1,
-                          getDrawingHorizontalLine: (value) {
-                            return const FlLine(
-                                strokeWidth: 1, color: Colors.white);
-                          },
-                          getDrawingVerticalLine: (value) {
-                            return const FlLine(
-                                strokeWidth: 1, color: Colors.white);
-                          },
-                        ),
-                        titlesData: FlTitlesData(
-                          show: true,
-                          rightTitles: const AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          topTitles: const AxisTitles(
-                            sideTitles: SideTitles(showTitles: false),
-                          ),
-                          bottomTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              reservedSize: 30,
-                              interval: 1,
-                              getTitlesWidget: bottomTitleWidgets,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Money during the last month",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontFamily: 'Francois One',
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
-                          leftTitles: AxisTitles(
-                            sideTitles: SideTitles(
-                              showTitles: true,
-                              interval: 1,
-                              getTitlesWidget: leftTitleWidgets,
-                              reservedSize: 42,
-                            ),
-                          ),
-                        ),
-                        borderData: FlBorderData(
-                          show: true,
-                          border: Border.all(color: Colors.white),
-                        ),
-                        maxY: 40,
-                        minY: -20,
-                        lineBarsData: [
-                          LineChartBarData(
-                            color: Color(0xFF00B512),
-                            spots: generateSpots(),
-                            barWidth: 3,
-                            isStrokeCapRound: true,
-                            dotData: const FlDotData(
-                              show: false,
-                            ),
-                            belowBarData: BarAreaData(
-                              show: true,
-                              color: Color(0x3F00B512)
-                            ),
-                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                              height: 200,
+                              child: LineChart(LineChartData(
+                                gridData: FlGridData(
+                                  show: true,
+                                  drawVerticalLine: true,
+                                  horizontalInterval: 10,
+                                  verticalInterval: 1,
+                                  getDrawingHorizontalLine: (value) {
+                                    return const FlLine(
+                                        strokeWidth: 1, color: Colors.white);
+                                  },
+                                  getDrawingVerticalLine: (value) {
+                                    return const FlLine(
+                                        strokeWidth: 1, color: Colors.white);
+                                  },
+                                ),
+                                titlesData: FlTitlesData(
+                                  show: true,
+                                  rightTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                  topTitles: const AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false),
+                                  ),
+                                  bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      reservedSize: 30,
+                                      interval: 1,
+                                      getTitlesWidget: bottomTitleWidgets,
+                                    ),
+                                  ),
+                                  leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(
+                                      showTitles: true,
+                                      interval: 1,
+                                      getTitlesWidget: leftTitleWidgets,
+                                      reservedSize: 42,
+                                    ),
+                                  ),
+                                ),
+                                borderData: FlBorderData(
+                                  show: true,
+                                  border: Border.all(color: Colors.white),
+                                ),
+                                maxY: 40,
+                                minY: -20,
+                                lineBarsData: [
+                                  LineChartBarData(
+                                    color: Color(0xFF00B512),
+                                    spots: generateSpots(),
+                                    barWidth: 3,
+                                    isStrokeCapRound: true,
+                                    dotData: const FlDotData(
+                                      show: false,
+                                    ),
+                                    belowBarData: BarAreaData(
+                                        show: true, color: Color(0x3F00B512)),
+                                  ),
+                                ],
+                              )))
                         ],
-                      )))
+                      )),
+                  const SizedBox(height: 10),
                 ],
               ),
             )),
