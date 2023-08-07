@@ -71,8 +71,9 @@ class AuthPage extends StatelessWidget {
                               onTap: () {
                                 if (data != null) {
                                   auth.signOut();
+                                } else {
+                                  auth.signInWithGoogle();
                                 }
-                                auth.signInWithGoogle();
                               },
                               child: Container(
                                 width: double.infinity,
