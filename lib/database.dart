@@ -115,6 +115,12 @@ class Database {
       totalMoney.add(double.parse(moneyValue.toStringAsFixed(2)));
     }
   }
+
+  void reset() {
+    totalMoney.add(0.0);
+    monthMoney.add(0.0);
+    transactions.add([]);
+  }
 }
 
 final Database db = Database();
