@@ -147,8 +147,8 @@ class Database {
     _averageIncome /= averageIncomeCounter;
     _averageCost /= averageCostCounter;
 
-    averageIncome.add(_averageIncome);
-    averageCost.add(_averageCost);
+    averageIncome.add(double.parse(_averageIncome.toStringAsFixed(2)));
+    averageCost.add(double.parse(_averageCost.toStringAsFixed(2)));
   }
 
   calculateAverageTransaction(User user) {

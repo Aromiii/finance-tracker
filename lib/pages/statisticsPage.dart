@@ -288,7 +288,7 @@ class StatisticsPage extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          left: 160,
+                          left: 210,
                           top: 113.04,
                           child: Transform(
                             transform: Matrix4.identity()
@@ -311,7 +311,7 @@ class StatisticsPage extends StatelessWidget {
                           left: 15,
                           top: 67,
                           child: Text(
-                            'This month',
+                            'Average cost',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
@@ -322,7 +322,7 @@ class StatisticsPage extends StatelessWidget {
                           left: 15,
                           top: 11,
                           child: Text(
-                            'Total',
+                            'Average income',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 24,
