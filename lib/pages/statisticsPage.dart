@@ -122,6 +122,55 @@ class StatisticsPage extends StatelessWidget {
                   const MoneySummary(),
                   const SizedBox(height: 10),
                   Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(10),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF737373),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Average transaction:",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                          ),
+                        ),
+                        StreamBuilder<double>(
+                          stream: db.averageTransaction.stream,
+                          initialData: db.averageTransaction.value,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                "${snapshot.data.toString()}€",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              );
+                            }
+
+                            return Text(
+                              "N/A",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(10),
                       clipBehavior: Clip.antiAlias,
@@ -210,6 +259,137 @@ class StatisticsPage extends StatelessWidget {
                               )))
                         ],
                       )),
+                  const SizedBox(height: 10),
+                  Container(
+                    width: double.infinity,
+                    height: 113,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF737373),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 56,
+                          child: Container(
+                            width: 400,
+                            decoration: const ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  width: 0.50,
+                                  strokeAlign: BorderSide.strokeAlignCenter,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 160,
+                          top: 113.04,
+                          child: Transform(
+                            transform: Matrix4.identity()
+                              ..translate(0.0, 0.0)
+                              ..rotateZ(-1.57),
+                            child: Container(
+                              width: 113.04,
+                              decoration: const ShapeDecoration(
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    width: 0.50,
+                                    strokeAlign: BorderSide.strokeAlignCenter,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 15,
+                          top: 67,
+                          child: Text(
+                            'This month',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                        const Positioned(
+                          left: 15,
+                          top: 11,
+                          child: Text(
+                            'Total',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 15,
+                          top: 67,
+                          child: StreamBuilder<double>(
+                            stream: db.averageIncome.stream,
+                            // Listen to changes in the BehaviorSubject
+                            initialData: db.averageIncome.value,
+                            // Set initial data (0.0 in this case)
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Text(
+                                  "${snapshot.data.toString()}€",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                  ),
+                                );
+                              }
+
+                              return Text(
+                                "N/A",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        Positioned(
+                          right: 15,
+                          top: 11,
+                          child: StreamBuilder<double>(
+                            stream: db.averageCost.stream,
+                            // Listen to changes in the BehaviorSubject
+                            initialData: db.averageCost.value,
+                            // Set initial data (0.0 in this case)
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return Text(
+                                  "${snapshot.data.toString()}€",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24,
+                                  ),
+                                );
+                              }
+
+                              return Text(
+                                "N/A",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             )),

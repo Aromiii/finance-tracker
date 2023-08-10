@@ -14,19 +14,27 @@ class Transaction {
 
 class Database {
   FirebaseFirestore instance = FirebaseFirestore.instance;
+
   BehaviorSubject<double> totalMoney = BehaviorSubject<double>.seeded(0.0);
   BehaviorSubject<double> monthMoney = BehaviorSubject<double>.seeded(0.0);
-  BehaviorSubject<List<Transaction>> transactions = BehaviorSubject<
-      List<Transaction>>.seeded([]);
+
+  BehaviorSubject<double> averageCost = BehaviorSubject<double>.seeded(0.0);
+  BehaviorSubject<double> averageIncome = BehaviorSubject<double>.seeded(0.0);
+  BehaviorSubject<double> averageTransaction = BehaviorSubject<double>.seeded(0.0);
+
+  BehaviorSubject<List<Transaction>> transactions =
+      BehaviorSubject<List<Transaction>>.seeded([]);
 
   Database() {
     auth.user?.listen((user) async {
       if (user != null) {
         await fetchTransactions();
-        Future.wait([
-          getCurrentMoneyOfTransactions(user),
-          getCurrentMoneyOfLastMonthTransactions(user),
+        await Future.wait([
+          calculateCurrentMoneyOfTransactions(user),
+          calculateCurrentMoneyOfLastMonthTransactions(user),
+          calculateAverageCostAndIncome(user),
         ]);
+        await calculateAverageTransaction(user);
       }
     });
   }
@@ -51,7 +59,8 @@ class Database {
 
     transactions.add(querySnapshot.docs.map<Transaction>((doc) {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      return Transaction(data['title'], data['amount'], data['desc'], data['createdAt'].toDate());
+      return Transaction(data['title'], data['amount'], data['desc'],
+          data['createdAt'].toDate());
     }).toList());
   }
 
@@ -65,9 +74,8 @@ class Database {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(auth.currentUser.value?.uid)
-          .set({
-        "money": FieldValue.increment(amount)
-      }, SetOptions(merge: true));
+          .set(
+              {"money": FieldValue.increment(amount)}, SetOptions(merge: true));
 
       await FirebaseFirestore.instance
           .collection('users')
@@ -84,21 +92,24 @@ class Database {
       currentList.add(Transaction(title, amount, desc, DateTime.now()));
       transactions.add(currentList);
 
-      getCurrentMoneyOfTransactions(auth.currentUser.value as User);
-      getCurrentMoneyOfLastMonthTransactions(auth.currentUser.value as User);
+      calculateCurrentMoneyOfTransactions(auth.currentUser.value as User);
+      calculateCurrentMoneyOfLastMonthTransactions(
+          auth.currentUser.value as User);
+      calculateAverageCostAndIncome(auth.currentUser.value as User);
     } catch (e) {
       print('Error creating document: $e');
     }
   }
 
-  Future<void> getCurrentMoneyOfLastMonthTransactions(User user) async {
+  Future<void> calculateCurrentMoneyOfLastMonthTransactions(User user) async {
     final DateTime currentDate = DateTime.now();
-    final DateTime thirtyDaysAgo = currentDate.subtract(
-        const Duration(days: 30));
+    final DateTime thirtyDaysAgo =
+        currentDate.subtract(const Duration(days: 30));
 
     double sum = 0.0;
     for (var transaction in transactions.value) {
-      if (transaction.createdAt.isBefore(currentDate) && transaction.createdAt.isAfter(thirtyDaysAgo)) {
+      if (transaction.createdAt.isBefore(currentDate) &&
+          transaction.createdAt.isAfter(thirtyDaysAgo)) {
         sum += transaction.amount;
       }
     }
@@ -107,13 +118,41 @@ class Database {
     monthMoney.add(sum);
   }
 
-
-  Future<void> getCurrentMoneyOfTransactions(User user) async {
+  Future<void> calculateCurrentMoneyOfTransactions(User user) async {
     final userDoc = await instance.collection("users").doc(user.uid).get();
     if (userDoc.exists) {
       final moneyValue = userDoc.data()?['money'] as double? ?? 0.0;
       totalMoney.add(double.parse(moneyValue.toStringAsFixed(2)));
     }
+  }
+
+  Future<void> calculateAverageCostAndIncome(User user) async {
+    int averageIncomeCounter = 0;
+    int averageCostCounter = 0;
+
+    double _averageIncome = 0.0;
+    double _averageCost = 0.0;
+
+    for (var transaction in transactions.value) {
+      if (transaction.amount >= 0.0) {
+        _averageIncome += transaction.amount;
+        ++averageIncomeCounter;
+      }
+      if (transaction.amount < 0.0) {
+        _averageCost += transaction.amount;
+        ++averageCostCounter;
+      }
+    }
+
+    _averageIncome /= averageIncomeCounter;
+    _averageCost /= averageCostCounter;
+
+    averageIncome.add(_averageIncome);
+    averageCost.add(_averageCost);
+  }
+
+  calculateAverageTransaction(User user) {
+    averageTransaction.add(double.parse((totalMoney.value / transactions.value.length).toStringAsFixed(2)));
   }
 
   void reset() {
