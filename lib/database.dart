@@ -54,7 +54,7 @@ class Database {
         .doc(uid)
         .collection("transactions")
         .orderBy('createdAt', descending: true)
-        .limit(5)
+        .limit(100)
         .get();
 
     transactions.add(querySnapshot.docs.map<Transaction>((doc) {
