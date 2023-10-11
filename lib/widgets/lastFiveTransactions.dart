@@ -49,9 +49,11 @@ class LastFiveTransactions extends StatelessWidget {
                     snapshot.data as List<Transaction>;
                 return Column(
                   children: transactions
+                      .take(5)
                       .map(
                         (transaction) => Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 3, horizontal: 0),
                             child: EventListElement(
                                 title: transaction.title,
                                 price: "${transaction.amount}€")),
