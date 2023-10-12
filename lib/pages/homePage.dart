@@ -59,6 +59,7 @@ class HomePage extends StatelessWidget {
                   LastFiveTransactions(),
                   const SizedBox(height: 10),
                   AddNewTransaction(),
+                  const SizedBox(height: 120)
                 ],
               ),
             )),
