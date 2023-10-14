@@ -89,7 +89,7 @@ class Database {
       });
 
       List<Transaction> currentList = transactions.value;
-      currentList.add(Transaction(title, amount, desc, DateTime.now()));
+      currentList.insert(0, Transaction(title, amount, desc, DateTime.now()));
       transactions.add(currentList);
 
       calculateCurrentMoneyOfTransactions(auth.currentUser.value as User);
